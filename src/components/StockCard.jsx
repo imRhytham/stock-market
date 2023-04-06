@@ -3,25 +3,35 @@ const StockCard = ({ data }) => {
 		<div className='card'>
 			<div className='card-body'>
 				<h5 className='card-title'>{data.symbol}</h5>
+				<p>Qty: {data.totalTradedVolume}</p>
 			</div>
-			<div>
-				<p className='card-text'>{data.lastPrice.toFixed(2)}</p>
+			<div className='price-container'>
+				<p className='card-text'>₹{data.lastPrice.toFixed(2)}</p>
 				<div className='price'>
 					<p className={data.change >= 0 ? 'text-plus' : 'text-negative'}>
 						{`(${data.change.toFixed(2)})`}
-						<span> h{data.pChange}%</span>
+						<span> {data.pChange}%</span>
 					</p>
 				</div>
 			</div>
 			<style jsx>{`
 				.card {
 					width: 30vw;
-					height: 10vh;
+					height: 7vh;
 					margin-left: 1rem;
+					padding: 0.5rem;
 					background-color: #f8f9fa;
 					border-bottom: 1px solid #ccc;
 					display: flex;
 					flex-direction: row;
+					justify-content: space-between;
+				}
+				.card-title {
+					font-size: 1.5rem;
+				}
+				.price-container {
+					display: flex;
+					flex-direction: column;
 					justify-content: space-around;
 				}
 				.price {
